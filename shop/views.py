@@ -62,18 +62,18 @@ def signup(request):
     return render(request, 'userprofile/signuppage.html', {'form': form})
 
 
-# def signin(request):
-#     if request.method == "POST":
-#         form = AuthenticateForm(request.POST)
-#         if form.is_valid():
-#             username = request.POST['username']
-#             raw_password = request.POST['password']
-#             useraccount = authenticate(username=username, password=raw_password)
-#             if useraccount is not None:
-#                 login(request, useraccount)
-#                 return redirect('shop:allprodcat')
-#             else:
-#                 return  redirect('signup')
-#     else:
-#         form = AuthenticateForm()
-#     return render(request, 'userprofile/signuppage.html', {'form': form})
+def signin(request):
+    if request.method == "POST":
+        form = AuthenticateForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            raw_password = request.POST['password']
+            useraccount = authenticate(username=username, password=raw_password)
+            if useraccount is not None:
+                login(request, useraccount)
+                return redirect('shop:allprodcat')
+            else:
+                return  redirect('signup')
+    else:
+        form = AuthenticateForm()
+    return render(request, 'userprofile/signuppage.html', {'form': form})
