@@ -20,10 +20,14 @@ from django.conf.urls.static import static
 """import the view from the app"""
 from shop import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('shop/', include('shop.urls')),
+    path('search/', include('searchengine_app.urls')),
+    path('shopping_cart/', include('shopping_cart.urls')),
+    path('account/create/', views.signup, name='signup'),
 ]
 
 """Mapping static and media urls"""

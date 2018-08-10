@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+    {% if category %}
+        {{  category.description|truncatewords:155 }}
+    {% else %}
+        Welcome to LSBD
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{  category.name }} - LSBD Store
+    {% else %}
+        See our clothing collection - LSBD
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <!--Breadcrumb nav-->
+        {% if category %}
+            <div class="row my_row">
+                <!-- central nav breadcrumb -->
+                <div class="mx-auto">
+                    <p><a href="{% url 'shop:allprodcat' %}">Our Product collection</a> | {{category.name}}</p>
+                </div>
+            </div>
+        {% endif %}
+        <div class="mx-auto">
+            {% if category %}
+                <img class="cat_image" src="{{category.image.url}}" alt="{{category.name}}">
+        </div>
+        <br>
+        <div>
+                <h1 class="text-center title">{{category.name}}</h1>
+                <p class="text-justify">{{category.description}}</p>
+        </div>
+        {% else %}
+            <img class="cat_image cat_image_padding" src="{% static 'img/banner.jpg' %}" alt="Our T-Shirts">
+
+        <br>
+        <div>
+            <h1 class="text-center title">Our Products</h1>
+            <p class="text-justify">Custom description</p>
+        </div>
+        {% endif %}
+        <div class="container">
+            <div class="row mx-auto">
+            {% for product in products %}
+                <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
+                    <div class="card text-center" style="min-width: 18rem;">
+                        <a href="{{product.get_url}}"><img class="card-img-top cat_image" src="{{product.image.url}}" alt="{{product.name}}"></a>
+                         <div class="card-body">
+                            <h4>{{product.name}}</h4>
+                            <p>£{{product.price}}</p>
+                         </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+            <div class="mx-auto">
+                {% if products.paginator.num_pages > 1 %}
+                <hr>
+                    <div class="text-center">
+                        {% for page in products.paginator.page_range %}
+                        <a href="?page={{page}}" class="btn btn-light btn-sm {%if products.number == pg %}active{% endif %}">{{page}}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+        </div>
+{% endblock %}

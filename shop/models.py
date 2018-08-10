@@ -31,6 +31,8 @@ class Category(models.Model):
 
 class Product(models.Model):
 
+# Attributes / Data
+
     name = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=250, unique=True)
     description = models.TextField(blank=True)
@@ -42,10 +44,14 @@ class Product(models.Model):
     stock = models.IntegerField()
     available = models.BooleanField(default=True)
 
+
+
     class Meta:
         ordering = ('name',)
         verbose_name = 'product'
         verbose_name_plural = 'products'
+
+#Behaviours/methods/functions below
 
     def get_url(self):
         return reverse('shop:proddetail', args=[self.category.slug, self.slug])

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+    Sign In
+{% endblock %}
+{% block title %}
+   Sign In - LSBD
+{% endblock %}
+<!-- Load crispy_forms template tags -->
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <h1 class="title text-center">Login or create an account</h1>
+        <br>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center custom_div">
+                <br>
+                <h2 class="title">New User?</h2>
+                <br>
+                <a href="{% url 'signup' %}" class="btn btn-secondary">Create an account</a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div>
+                <br>
+                <h2 class="title">Registered Customer:</h2>
+                <form method = "POST">
+                    {% csrf_token %}
+                    <p>{{ form|crispy}}</p>
+                    <button type="submit" class="btn btn-secondary">Login</button>
+                </form>
+                <br>
+            </div>
+
+
+        </div>
+    </div>
+        <br>
+</div>
+<br>
+{% endblock %}

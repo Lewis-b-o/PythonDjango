@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block metadescription %}
+    Sign up form
+{% endblock %}
+{% block title %}
+    Create new account - LSBD
+{% endblock %}
+<!-- Load crispy_forms template tags -->
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div>
+        <!-- check if all required fields in the form have a form to ensure its valid -->
+        {% if not form.is_valid %}
+            <div class="mx-auto">
+                <br>
+                <h1 class="tile text-center">New Account</h1>
+                <br>
+                <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+                    <br>
+                    <p>Enter information below:</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>{{ form|crispy }}</p>
+                        <button type="submit" class="btn btn-secondary">Register</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        {% else %}
+        <div class="mx-auto">
+            <br>
+            <h1 class="title text-center">Account created</h1>
+            <br>
+            <div>
+                <p>
+                    <br>
+                    Your Account has been created
+                    <br>
+                    <a href="{% url 'shop:allprodcat' %}">Continue</a>
+                </p>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+<br>
+{% endblock %}
+

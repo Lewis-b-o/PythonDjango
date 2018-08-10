@@ -75,6 +75,7 @@ font-family: 'Roboto Condensed', sans-serif;
 .my_prod_row_class {
     padding-top: 15px;
     padding-bottom: 20px;
+
 }
 
 .my_prod_row_class .mx-auto p {
@@ -100,4 +101,13 @@ font-family: 'Roboto Condensed', sans-serif;
 .my_prod_text {
     padding-right: 20px;
 
+}
+
+.product_img {
+    !height: 400px;
+    !width: 400px;
+}
+
+.custom_div {
+    margin-bottom: 20px !important;
 }

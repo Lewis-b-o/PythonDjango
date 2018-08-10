@@ -101,3 +101,41 @@ font-family: 'Roboto Condensed', sans-serif;
     padding-right: 20px;
 
 }
+
+.my_search_text {
+    padding-top: 20px;
+}
+
+/*Cart page*/
+.product_table {
+    min-width: 400px;
+    font-size:14px;
+
+}
+
+.thead {
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: .2am;
+    background-color: #f8f9fa!important;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.c_class {
+    text-decoration: None;
+}
+
+.icon_plus {
+    text-decoration: None;
+    color: #868e96 !important;
+
+}
+
+.error li {
+    color: red;
+    font-weight: bold;
+}
