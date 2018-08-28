@@ -24,24 +24,22 @@
                 </div>
             </div>
         {% endif %}
-        <div class="mx-auto">
-            {% if category %}
-                <img class="cat_image" src="{{category.image.url}}" alt="{{category.name}}">
-        </div>
-        <br>
-        <div>
-                <h1 class="text-center title">{{category.name}}</h1>
-                <p class="text-justify">{{category.description}}</p>
-        </div>
-        {% else %}
-            <img class="cat_image cat_image_padding" src="{% static 'img/banner.jpg' %}" alt="Our T-Shirts">
 
-        <br>
-        <div>
-            <h1 class="text-center title">Our Products</h1>
-            <p class="text-justify">Custom description</p>
-        </div>
+        {% if category %}
+            <br>
+            <div>
+                    <h1 class="text-center title">{{category.name}}</h1>
+                    <p class="text-justify">{{category.description}}</p>
+            </div>
+        {% else %}
+            <img class="cat_image cat_image_padding" src="{% static 'img/LSBDBanner.jpg' %}" alt="Our T-Shirts">
+            <br>
+            <br>
+            <div>
+                <h1 class="text-center title">Our Products</h1>
+            </div>
         {% endif %}
+        <br>
         <div class="container">
             <div class="row mx-auto">
             {% for product in products %}

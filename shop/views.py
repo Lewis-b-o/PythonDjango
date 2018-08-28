@@ -2,21 +2,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Category, Product
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
-from .forms import SignUp
+from .forms import SignUp, MyForm
 from django.contrib.auth.models import Group, User
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 
 # create request function called index
-
-
 def index(request):
     text_var = 'This is my first django app web page'
     return HttpResponse(text_var)
 
 # Category view
+
 
 def allprodcat(request, c_slug=None):
     categories_page = None
@@ -41,11 +41,18 @@ def allprodcat(request, c_slug=None):
 
 
 def proddetail(request, c_slug, product_slug):
+    form = MyForm()
     try:
         product = Product.objects.get(category__slug=c_slug, slug=product_slug)
     except Exception as e:
         raise e
-    return render(request, 'shop/product.html', {'product': product})
+    return render(
+        request, 'shop/product.html', {'product': product, 'form': form, 'pagetitle': getpagetitle(product.name)}
+    )
+
+
+def getpagetitle(name):
+    return "{} - LSBD".format(name)
 
 
 def signup(request):
@@ -62,18 +69,23 @@ def signup(request):
     return render(request, 'userprofile/signuppage.html', {'form': form})
 
 
-# def signin(request):
-#     if request.method == "POST":
-#         form = AuthenticateForm(request.POST)
-#         if form.is_valid():
-#             username = request.POST['username']
-#             raw_password = request.POST['password']
-#             useraccount = authenticate(username=username, password=raw_password)
-#             if useraccount is not None:
-#                 login(request, useraccount)
-#                 return redirect('shop:allprodcat')
-#             else:
-#                 return  redirect('signup')
-#     else:
-#         form = AuthenticateForm()
-#     return render(request, 'userprofile/signuppage.html', {'form': form})
+def signin(request):
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            raw_password = request.POST['password']
+            useraccount = authenticate(username=username, password=raw_password)
+            if useraccount is not None:
+                login(request, useraccount)
+                return redirect('shop:allprodcat')
+            else:
+                return redirect('signup')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'userprofile/signinpage.html', {'form': form })
+
+
+def logoutView(request):
+    logout(request)
+    return redirect('shop:allprodcat')

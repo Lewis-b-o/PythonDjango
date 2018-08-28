@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from . models import ShopCart, Item
 from shop.models import Product
+from shop.forms import MyForm
 # Create your views here.
 
 #Adding session ID's for the user
@@ -13,6 +14,15 @@ def _id(request):
         shop_cart = request.session.create()
     return shop_cart
 
+
+# def submitted(request):
+#
+#     size = request.GET['size']
+#
+#     if size == "default":
+#         return render(request, 'template.html', {'form': form, 'error': 'Select something this time fool'})
+#     else:
+#         return render(request, 'submitted.html', {"meta": size})
 
 def _adding_cart(request, product_id):
     product = Product.objects.get(id=product_id)

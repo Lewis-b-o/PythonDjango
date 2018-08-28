@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>{{ error }} </h2>
+    <ul>
+        <form action="{% url 'submitted' %}">
+            <select name="size">
+                <option value = "default">Please choose a size</option>
+                {% for choice in form.my_choice_field.field.choices %}
+                    <option value="{{ choice }}">{{ choice }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit"/>
+        </form>
+    </ul>
+</body>
+</html>

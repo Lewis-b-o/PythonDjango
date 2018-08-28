@@ -1,0 +1,23 @@
+<!--
+<div class="container">
+    <div class="top-menu-bar">
+        <ul>
+            {% if request.user.is_authenticated and request.user.username %}
+            <li>
+                Signed is as: {{ request.user.username }}
+            </li>
+            <li>
+                <a href="">Log out</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'signup' %}">Sign Up</a>
+            </li>
+            <li>
+                <a href="{% url 'signin' %}">Sign In</a>
+            </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</div>-->

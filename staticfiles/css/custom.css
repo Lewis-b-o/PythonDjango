@@ -5,6 +5,10 @@ font-family: 'Roboto Condensed', sans-serif;
 
 /*Navbar*/
 
+.nav-link {
+    padding-right: 200px;
+}
+
 .nav-item {
     letter-spacing: .2em;
     font-size: 14px;

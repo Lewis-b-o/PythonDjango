@@ -11,6 +11,43 @@ font-family: 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
 }
 
+.top_nav {
+    height: 20px;
+    line-height: 50px
+    width:70%;
+}
+
+.top-menu-bar {
+    text-align: left !important;
+   margin-right:30px;
+   padding-top:1.5%;
+
+
+}
+
+.top-menu-bar ul li {
+    list-style: None;
+    color: #FFA500;
+    text-transform: uppercase;
+    letter-spacing: .2am;
+    font-size: 12px;
+    padding-left: 10px;
+    display: inline;
+    text-align: left;
+
+}
+
+.top-menu-bar ul li a {
+    text-decoration: None;
+    list-style: None;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: .2am;
+    font-size: 12px;
+        text-align: left;
+
+}
+
 .dropdown-item {
     font-size: 14px;
     letter-spacing: .2em;
@@ -24,9 +61,10 @@ font-family: 'Roboto Condensed', sans-serif;
     height: 60px
 }
 
-.my_footer {
+.my_footer p {
     padding-top: 20px;
     font-size: 14px;
+
 }
 
 /*category page*/

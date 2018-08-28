@@ -28,6 +28,8 @@ urlpatterns = [
     path('search/', include('searchengine_app.urls')),
     path('shopping_cart/', include('shopping_cart.urls')),
     path('account/create/', views.signup, name='signup'),
+    path('account/login/', views.signin, name='signin'),
+    path('account/logout/', views.logoutView, name='logout'),
 ]
 
 """Mapping static and media urls"""
